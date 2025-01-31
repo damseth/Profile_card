@@ -6,6 +6,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="images/Logo 11.png">
     <title>Profile Card</title>
+    <script>
+				setInterval(function(){
+						setUTCTime()
+                }, 1000);
+
+				function setUTCTime() {
+					const time = utcTime = new Date().toISOString().slice(11,19);
+					document.getElementById('time').innerHTML = time;
+				}
+			</script>
+		
     <style>
        
         body {
@@ -102,6 +113,9 @@
                 font-size: 24px;
                 color: purple;
             }
+            #social_links{
+                margin-bottom: 10px;
+            }
         
     </style>
 </head>
@@ -113,24 +127,13 @@
         <p data-testid="shortBio">A front-end developer with under a year of experience, actively growing skills in crafting engaging user experiences.  Hands-on project experience has solidified my proficiency in HTML, CSS, and JavaScript. I seek opportunities to contribute to challenging projects within a collaborative team.</p>
         <div class="location" data-testid="currentLocation">Lagos, Nigeria</div>
         <div class="email" data-testid="emailAddress">damilareseth47@gmail.com</div>
-        <div class="social-links" data-testid="socialLinks">
+        <div class="social-links" data-testid="socialLinks" id="social_links">
             <a href="https://www.linkedin.com/in/adeleye-oluwadamilare/" class="fa fa-linkedin" id="linkedin"></a>
             <a href="https://x.com/seth_adeleye" class="fa fa-twitter" id="twitter"></a>
             <a href="https://github.com/damseth" class="fa fa-github" id="github"></a>
         </div>
-        <div class="utc-time" data-testid="currentTimeUTC" id="currentTimeUTC"></div>
-    </div>
-
-    <script>
-        function updateTime() {
-            const utcTimeElement = document.getElementById('currentTimeUTC');
-            const now = new Date();
-            const utcTime = now.toUTCString();
-            utcTimeElement.textContent = ` ${utcTime}`;
-        }
-
-        // Update the time on page load
-        updateTime();
-    </script>
+        <div onload="setUTCTime()">
+			<div id="time" data-testid="currentTimeUTC">Time</div>
+        </div>
 </body>
 </html>
